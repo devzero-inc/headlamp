@@ -9,9 +9,22 @@ Backend:
 - plugin route hardcoded to return ['dynamic-plugins']
 
 Frontend:
-- no modifications on frontend, except PUBLIC_URL env var set to "/headlamp"
+- PUBLIC_URL set to "/headlamp"
+- dynamic-clusters plugin enabled
 
 ## Setup guide
-- run `npm run build-dz` 
-- copy build folder over to nextjs public folder
-- rename to "headlamp"
+
+- install and build frontend
+- install and build dynamic-clusters plugin
+- copy dynamic-clusters build stuff into frontend build stuff
+- copy the frontend/build to nextjs public/headlamp
+  
+```
+npm --prefix ./frontend install
+npm --prefix ./frontend run build-dz
+npm --prefix ./plugins/examples/dynamic-clusters install
+npm --prefix ./plugins/examples/dynamic-clusters run build
+mkdir -p ./frontend/build/plugins/dynamic-clusters
+cp ./plugins/examples/dynamic-clusters/dist/main.js ./frontend/build/plugins/dynamic-clusters/main.js
+cp ./plugins/examples/dynamic-clusters/package.json ./frontend/build/plugins/dynamic-clusters/package.json
+```
