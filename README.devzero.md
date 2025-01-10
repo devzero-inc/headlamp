@@ -6,19 +6,20 @@ A fork of headlamp for devzero. Leverages dynamic-clusters plugin to ensure clus
 
 Backend:
 - rewritten api routes on nextjs/backend
-- plugin route hardcoded to return ['dynamic-plugins']
+- plugin route hardcoded to return ['dynamic-plugins', 'change-logo'] and any other enabled plugin
 
 Frontend:
 - PUBLIC_URL set to "/headlamp"
-- dynamic-clusters plugin enabled
+- plugins built and copied to frontend build folder
 
 ## Setup guide
 
-- install and build frontend
-- install and build dynamic-clusters plugin
-- copy dynamic-clusters build stuff into frontend build stuff
-- copy the frontend/build to nextjs public/headlamp
-  
+Two short steps to update headlamp on `devzero-website`
+
+### 1. Prepare build files from this repository
+
+**Option A (via script)**
+
 ```
 npm --prefix ./frontend install
 npm --prefix ./frontend run build-dz
@@ -35,3 +36,12 @@ mkdir -p ./frontend/build/plugins/change-logo
 cp ./plugins/devzero/change-logo/dist/main.js ./frontend/build/plugins/change-logo/main.js
 cp ./plugins/devzero/change-logo/package.json ./frontend/build/plugins/change-logo/package.json
 ```
+
+**Option B (manualy)**
+
+- install and build /frontend
+- install and build each /plugins/devzero/PLUGIN_NAME
+- for each plugin copy `/dist/main.js` and `/package.json` to /frontend/build/plugins/PLUGIN_NAME/
+
+### 2. Copy built files to devzero-website repository
+- copy contents of `/frontend/build` to `/devzero-website/public/headlamp` 
