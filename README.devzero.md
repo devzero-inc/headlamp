@@ -22,9 +22,16 @@ Frontend:
 ```
 npm --prefix ./frontend install
 npm --prefix ./frontend run build-dz
-npm --prefix ./plugins/examples/dynamic-clusters install
-npm --prefix ./plugins/examples/dynamic-clusters run build
+
+npm --prefix ./plugins/devzero/dynamic-clusters install
+npm --prefix ./plugins/devzero/dynamic-clusters run build
 mkdir -p ./frontend/build/plugins/dynamic-clusters
-cp ./plugins/examples/dynamic-clusters/dist/main.js ./frontend/build/plugins/dynamic-clusters/main.js
-cp ./plugins/examples/dynamic-clusters/package.json ./frontend/build/plugins/dynamic-clusters/package.json
+cp ./plugins/devzero/dynamic-clusters/dist/main.js ./frontend/build/plugins/dynamic-clusters/main.js
+cp ./plugins/devzero/dynamic-clusters/package.json ./frontend/build/plugins/dynamic-clusters/package.json
+
+npm --prefix ./plugins/devzero/change-logo install
+npm --prefix ./plugins/devzero/change-logo run build
+mkdir -p ./frontend/build/plugins/change-logo
+cp ./plugins/devzero/change-logo/dist/main.js ./frontend/build/plugins/change-logo/main.js
+cp ./plugins/devzero/change-logo/package.json ./frontend/build/plugins/change-logo/package.json
 ```
